@@ -3,11 +3,18 @@ const ExpenseFilter = (props) => {
   const filterChangeHandler = (event) => {
     props.onFilterChange(event.target.value);
   };
-  const classNames = "row "+ props.className;
+  const classNames = "row " + props.className;
   return (
     <div className={classNames}>
-      <div className="col-12 offset-md-10 col-md-2 text-right">
-        <select className="form-control" value={props.selected} onChange={filterChangeHandler}>
+      <div className="col-12 col-md-10 text-left">
+        <h5>Filter By Year</h5>
+      </div>
+      <div className="col-12 col-md-2 text-right">
+        <select
+          className="form-control"
+          value={props.selected}
+          onChange={filterChangeHandler}
+        >
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>

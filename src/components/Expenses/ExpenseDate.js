@@ -5,10 +5,10 @@ const ExpenseDate = (props) => {
   const day = props.date.toLocaleString("en-US", { day: "2-digit" });
   const year = props.date.getFullYear();
   return (
-    <Card className="text-center text-bold">
+    <Card className="text-center text-bold bg-secondary text-white text-bold">
       <div>{month}</div>
       <div>{year}</div>
-      <div>{day}</div>
+      <div><h3>{day}</h3></div>
     </Card>
   );
 };

@@ -1,23 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 const ExpenseItem = (props) => {
-  const [title, setTitle] = useState(props.title);
-  const clickHandler = () => {
-    setTitle("Hello Muthu");
-    console.log("Clicked!!!!");
-  }
+  
   return (
-    <Card className="row">
-      <div className="col-12 col-md-2">
+    <Card className="row" parentClass="mb-4">
+      <div className="col-12 col-md-2 justify-content-center align-self-center">
         <ExpenseDate date={props.date}></ExpenseDate>
       </div>
-      <div className="col-12 col-md-8">
-        <h3>{title}</h3>
+      <div className="col-12 col-md-8 justify-content-center align-self-center">
+        <h3>{props.title}</h3>
       </div>
-      <div className="col-12 col-md-2 text-right">
-        <span className="btn btn-info btn-sm">${props.amount}</span>
-        <button onClick={clickHandler} className="btn btn-sm btn-success">Click Here</button>
+      <div className="col-12 col-md-2 text-right justify-content-center align-self-center">
+        <button className="btn btn-info btn-sm align-right">${props.amount}</button>
       </div>
     </Card>
   );

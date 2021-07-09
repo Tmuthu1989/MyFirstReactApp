@@ -44,7 +44,6 @@ const ExpenseForm = (props) => {
     setTitle("");
     setDate("");
     setAmount("");
-    
   };
   return (
     <form onSubmit={submitForm}>
@@ -88,6 +87,13 @@ const ExpenseForm = (props) => {
         </div>
         <div className="col-12">
           <div className="form-group">
+            <button
+              onClick={props.onCancel}
+              type="submit"
+              className="btn btn-danger mr-2"
+            >
+              Cancel
+            </button> &emsp;
             <button type="submit" className="btn btn-success">
               Submit
             </button>

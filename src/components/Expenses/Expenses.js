@@ -1,38 +1,37 @@
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
+import ExpensesList from "./ExpensesList";
 import ExpenseFilter from "./ExpenseFilter";
 import Card from "../UI/Card";
 const Expenses = (props) => {
-  const [selectedYear, setSelectedYear] = useState('2020');
+  const [selectedYear, setSelectedYear] = useState("2020");
+  const filteredExpenses = props.items.filter((elem) => {
+    return elem.date.getFullYear().toString() === selectedYear;
+  });
   const getExpenseFilter = (filterYear) => {
     setSelectedYear(filterYear);
-    console.log("Selected Filter Year is:", filterYear);
-  }
+  };
+
   return (
     <div>
-      
-      <Card>
-        <ExpenseFilter selected={selectedYear} onFilterChange={getExpenseFilter} className="mb-4"></ExpenseFilter>
-        <ExpenseItem
-          title={props.items[0].title}
-          amount={props.items[0].amount}
-          date={props.items[0].date}
+      <Card parentClass="mb-4">
+        <ExpenseFilter
+          selected={selectedYear}
+          onFilterChange={getExpenseFilter}
+          className="mb-4"
         />
-        <ExpenseItem
-          title={props.items[1].title}
-          amount={props.items[1].amount}
-          date={props.items[1].date}
-        />
-        <ExpenseItem
-          title={props.items[2].title}
-          amount={props.items[2].amount}
-          date={props.items[2].date}
-        />
-        <ExpenseItem
-          title={props.items[3].title}
-          amount={props.items[3].amount}
-          date={props.items[3].date}
-        />
+        <ExpensesList items={filteredExpenses}/>
+        {/* {filteredExpenses.length === 0 && (
+          <h4 className="text-danger">No Expenses Found!</h4>
+        )}
+        {filteredExpenses.length > 0 &&
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))} */}
       </Card>
     </div>
   );
